@@ -1,0 +1,45 @@
+<%@ include file="header.jspf"%>
+
+<%
+List<Ticket> ticket_list = null;
+TicketWrapper wrapper;
+int pgSize = 25;
+int factor = 4;
+request.setAttribute("isLastPage", false);
+request.setAttribute("nextPageAvailable", true);
+request.setAttribute("prevPageAvailable", true);
+request.setAttribute("isPrevAllowedLocally", true);
+
+if (null != request.getAttribute("wrapper")) {
+	wrapper = (TicketWrapper) request.getAttribute("wrapper");
+	request.getSession().setAttribute("wrapper", wrapper);
+} else
+	wrapper = (TicketWrapper) request.getSession().getAttribute("wrapper");
+
+if(wrapper.getTickets().size()<pgSize)
+	request.setAttribute("isLastPage", true);
+
+String spageid = request.getParameter("page");
+int pageid = Integer.parseInt(spageid);
+int fromIndex = pgSize * (pageid%factor==0?(factor-1):((pageid%factor) - 1));
+int toIndex = pgSize + fromIndex;
+
+if(pageid % factor == 1)
+	request.setAttribute("isPrevAllowedLocally", false);
+
+if (toIndex > wrapper.getTickets().size()) 
+	toIndex = wrapper.getTickets().size();
+
+if (toIndex == wrapper.getTickets().size()) {
+	request.setAttribute("isLastPage", true);
+	request.setAttribute("session", request.getSession());
+}
+if(null == wrapper.getNext_page())
+	request.setAttribute("nextPageAvailable", false);
+if(null == wrapper.getPrevious_page() && pageid == 1)
+	request.setAttribute("prevPageAvailable", false);
+
+request.setAttribute("pageid", pageid);
+request.setAttribute("ticket_list", wrapper.getTickets().subList(fromIndex, toIndex));
+
+%>
