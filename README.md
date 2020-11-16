@@ -32,7 +32,7 @@ It is a web application with browser based UI.
 ## Usage
 * Click on 'click here' link on home page to see list of all the tickets.
 
-![Alt text](homePage.jpg?raw=true )
+![Alt text](https://github.com/manasi517/ticket-viewer/blob/master/homePage.JPG?raw=true )
 
 * Page through the list using Next and Previous buttons.
 
