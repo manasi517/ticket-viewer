@@ -36,8 +36,8 @@ It is a web application with browser based UI.
 
 * Page through the list using Next and Previous buttons.
 
-![Alt text](https://github.com/manasi517/ticket-viewer/blob/master/pagination.jpg?raw=true )
+![Alt text](https://github.com/manasi517/ticket-viewer/blob/master/pagination.JPG?raw=true )
 
 * Click on Details button to see the detail for particular ticket.
 
-![Alt text](https://github.com/manasi517/ticket-viewer/blob/master/ticket-details.jpg?raw=true )
+![Alt text](https://github.com/manasi517/ticket-viewer/blob/master/ticket-details.JPG?raw=true )
